@@ -1,0 +1,15 @@
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/general.css">
+<body>
+  <%- include('../partials/header') %>
+
+  <% if (lastHome) { %>
+    <p>Home successfully registered: <%= lastHome.homeName %></p>
+  <% } else { %>
+    <p>No home found (something went wrong).</p>
+  <% } %>
+
+  <br>
+  <a href="/">Go to Home</a>
+</body>
+</html>

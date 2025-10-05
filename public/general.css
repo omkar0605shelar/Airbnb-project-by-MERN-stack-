@@ -1,0 +1,14 @@
+.links{
+  color: white;
+  margin-top:15px;
+  margin:15px;
+  text-decoration: none;
+  padding-top: 10px;
+}
+
+header{
+  height: 30px;
+  background-color: red;
+  padding-top: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}

@@ -1,0 +1,44 @@
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/home-list.css">
+<link rel="stylesheet" href="/general.css">
+</head>
+<body>
+  <%- include('../partials/header') %>
+
+  <div class="div-title">
+    <h1 style="text-align:center;font-family:Arial, Helvetica, sans-serif"> 
+      Here are our host home list. 
+    </h1>
+  </div>
+
+  <div class="list">
+    <% registerHomes.forEach(registerHome => { %>
+      <div class="sub-list">
+        <div>
+          <strong>Name :</strong> <%= registerHome.homeName %> 
+          <br>
+          <strong>Price : </strong> <%= registerHome.price %> 
+          <br>
+          <strong>Location : </strong> <%= registerHome.location %> 
+          <br>
+          <strong>Rating : </strong> <%= registerHome.rating %> out of 5
+          <br><br>
+
+          <strong>Image: </strong>
+          <img src="<%= registerHome.imageUrl %>" alt="Home page" width="300" height="200">
+          <br><br>
+
+          <!-- Buttons in one line -->
+          <div class="action-buttons">
+            <a href="/host/edit-home/<%= registerHome.id %>?editing=true" class="edit-button">Edit</a>
+            <form action="/host/delete-home/<%= registerHome.id %>" method="POST">
+              <button type="submit" class="delete-button">Delete</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    <% }); %>      
+  </div>
+</body>
+</html>

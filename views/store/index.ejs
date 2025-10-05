@@ -1,0 +1,33 @@
+<%- include('../partials/head') %>
+    <link rel="stylesheet" href="home-list.css">
+    <link rel="stylesheet" href="general.css">
+    </head>
+  <body>
+    <%- include('../partials/header') %>
+    <div class="div-title">
+      <h1 style="text-align:center;font-family:Arial, Helvetica, sans-serif"> 
+        Welcome to our Index page.
+      </h1>
+    </div>
+
+    <div class="list">
+        <% registerHomes.forEach(registerHome => { %>
+        <div class="sub-list">
+          <div>
+          <strong>Name :</strong> <%= registerHome.homeName %> 
+          <br>
+          <strong>Price : </strong> <%= registerHome.price %> 
+          <br>
+          <strong>Location : </strong> <%= registerHome.location %> 
+          <br>
+          <strong>Rating : </strong> <%= registerHome.rating %> out of 5
+          <br><br>
+          <strong>Image: </strong><img src="<%= registerHome.imageUrl %>" alt="Home page"  width="300" height="200">
+          <br><br>
+          <button class="book-button">Book</button>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </body>
+</html> 

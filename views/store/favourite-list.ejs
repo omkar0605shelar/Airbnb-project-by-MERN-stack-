@@ -1,0 +1,33 @@
+<%- include('../partials/head') %>
+    <link rel="stylesheet" href="/home-list.css">
+    <link rel="stylesheet" href="/general.css">
+    </head>
+  <body>
+    <%- include('../partials/header') %>
+    <div class="div-title">
+      <h1 style="text-align:center;font-family:Arial, Helvetica, sans-serif"> 
+        Here are our favourites.
+      </h1>
+    </div>
+
+    <div class="list">
+        <% registerHomes.forEach(registerHome => { %>
+        <div class="sub-list">
+          <div>
+          <strong>Name :</strong> <%= registerHome.homeName %> 
+          <br>
+          <strong>Price : </strong> <%= registerHome.prices %> 
+          <br>
+          <strong>Location : </strong> <%= registerHome.location %> 
+          <br>
+          <strong>Rating : </strong> <%= registerHome.rating %> out of 5
+          <br><br>
+          <strong>Image: </strong><img src="<%= registerHome.image %>" alt="Home page"  width="300" height="200">
+          <br><br>
+          <form action="/store/favourite-list/delete/<%= registerHome.id %>" method="POST"><button type="submit" class="delete-button">Delete</button></form>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </body>
+</html> 

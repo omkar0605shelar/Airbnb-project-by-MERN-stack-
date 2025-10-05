@@ -1,0 +1,46 @@
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/general.css">
+<link rel="stylesheet" href="/add-Home.css">
+<body>
+  <%- include('../partials/header') %>
+
+  <div class="container">
+    <h1><%= editing ? "Edit" : "Register" %> your home here:</h1>
+
+    <form action="/host/<%= editing ? 'edit-home' : 'add-home' %>" method="POST" class="home-form">
+      <input type="hidden" placeholder="Enter id" value="<%= editing ? home.id : '' %>" name="id">
+      <label>
+        Name of Home:
+        <input type="text" name="homeName" placeholder="Enter here:" value="<%= editing ? home.homeName : '' %>">
+      </label>
+
+      <label>
+        Enter price:
+        <input type="text" name="price" placeholder="Enter price:" value="<%= editing ? home.price : '' %>">
+      </label>
+
+      <label>
+        Enter location:
+        <input type="text" name="location" placeholder="Enter here:" value="<%= editing ? home.location : '' %>">
+      </label>
+
+      <label>
+        Rating:
+        <input type="text" placeholder="Rating:" value="<%= editing ? home.rating : '' %>" name="rating">
+      </label>
+
+      <label>
+        Image:
+        <input type="text" placeholder="Enter image:" name="imageUrl" value="<%= editing ? home.imageUrl : '' %>">
+      </label>
+
+      <label>
+        Image:<br>
+        <textarea placeholder="Enter description:" name="description"><%= editing ? home.description : '' %></textarea>
+      </label>
+
+      <input type="submit" value="<%= editing ? 'Update Home' : 'Add Home' %>">
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<%- include('../partials/head') %>
+    <link rel="stylesheet" href="/home-list.css">
+    <link rel="stylesheet" href="/general.css">
+    </head>
+  <body>
+    <%- include('../partials/header') %>
+    <h2 style="text-align:center;font-family:Arial;">
+        You are in home-detail page
+    </h2>
+    <div>
+        <div class="sub-list">
+          <div>
+          <strong>Name :</strong> <%= home.homeName %> 
+          <br>
+          <strong>Price : </strong> <%= home.prices %> 
+          <br>
+          <strong>Location : </strong> <%= home.location %> 
+          <br>
+          <strong>Rating : </strong> <%= home.rating %> out of 5
+          <br><br>
+          <strong>Image: </strong><img src="<%= home.image %>" alt="Home page"  width="300" height="200">
+          <br><br>
+
+          <div style="margin-top: 5px;">
+            <%- include('../partials/favourite') %>
+          </div>
+    </div>
+  </body>
+</html>
