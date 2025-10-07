@@ -8,7 +8,7 @@
     <h1><%= editing ? "Edit" : "Register" %> your home here:</h1>
 
     <form action="/host/<%= editing ? 'edit-home' : 'add-home' %>" method="POST" class="home-form">
-      <input type="hidden" placeholder="Enter id" value="<%= editing ? home.id : '' %>" name="id">
+      <input type="hidden" placeholder="Enter id" value="<%= editing ? home._id : '' %>" name="id">
       <label>
         Name of Home:
         <input type="text" name="homeName" placeholder="Enter here:" value="<%= editing ? home.homeName : '' %>">

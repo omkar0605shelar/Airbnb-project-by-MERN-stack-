@@ -30,8 +30,8 @@
 
           <!-- Buttons in one line -->
           <div class="action-buttons">
-            <a href="/host/edit-home/<%= registerHome.id %>?editing=true" class="edit-button">Edit</a>
-            <form action="/host/delete-home/<%= registerHome.id %>" method="POST">
+            <a href="/host/edit-home/<%= registerHome._id %>?editing=true" class="edit-button">Edit</a>
+            <form action="/host/delete-home/<%= registerHome._id %>" method="POST">
               <button type="submit" class="delete-button">Delete</button>
             </form>
           </div>

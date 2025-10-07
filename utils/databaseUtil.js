@@ -1,15 +1,18 @@
+// const mongodb = require('mongodb');
+// const MongoClient = mongodb.MongoClient;
+
 const {MongoClient} = require("mongodb");
 
-const url = "mongodb+srv://shelaromkar313_db_user:Shelar321@clustertest.0zmobsm.mongodb.net/";
+const url = "mongodb+srv://shelaromkar313_db_user:Shelar321@clustertest.0zmobsm.mongodb.net/?retryWrites=true&w=majority&appName=ClusterTest";
 
 let _db;
 
-const mongoConnect = (callback) => {
-  MongoClient.connect(url)
+const mongoConnect = (callback) => {  // Creates new Promise((resolve, reject) => { 
+   MongoClient.connect(url)  // Resolve process of promieses
   .then((client) =>{
     console.log("Connected to mongoDB");
     _db = client.db("airbnb");
-    callback(client);
+    callback();
   })
   .catch((err) => {
     console.log(err, " Error occurs");
@@ -21,6 +24,6 @@ const getDb = () =>{
     return _db;
   }
 
-  throw "No database Found";
+  throw new Error("No database Found");
 }
 module.exports = {mongoConnect, getDb};
