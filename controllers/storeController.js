@@ -32,17 +32,15 @@ exports.getBookings = (req, res, next) => {
 exports.getFavouriteList = (req, res, next) => {
   Favourite.getFavourites()
     .then(favourites => {
-      // Convert favourites to an array of houseId strings
       const favouriteIds = favourites.map(fav => fav.houseId.toString());
 
       return Home.fetchAll().then(registerHomes => {
-        // Only include homes that are actually in favourites
         const favouriteHomes = registerHomes.filter(home =>
           favouriteIds.includes(home._id.toString())
         );
 
         res.render("store/favourite-list", {
-          registerHomes: favouriteHomes, // matches EJS variable
+          registerHomes: favouriteHomes,
           pageTitle: "My favourites",
           currentPage: "Favourites"
         });
@@ -52,6 +50,7 @@ exports.getFavouriteList = (req, res, next) => {
       console.error("Error fetching favourite homes:", err);
     });
 };
+
 
 
 exports.getHomeDetail = (req, res, next) => {
@@ -89,11 +88,11 @@ exports.postAddToFavourite = (req, res, next) => {
   })
 }
 exports.postRemoveToFavourites = (req, res, next) => {
-  const homeId = req.params.id; // this is a string from the URL
+  const homeId = req.params.homeId;  // ✅ matches router param
   console.log("Came to delete favourite homeId:", homeId);
 
   Favourite.deleteById(homeId)
     .then(() => console.log("Favourite removed:", homeId))
-    .catch(err => console.log(err))
+    .catch(err => console.error("Error deleting favourite:", err))
     .finally(() => res.redirect('/store/favourite-list'));
 };
