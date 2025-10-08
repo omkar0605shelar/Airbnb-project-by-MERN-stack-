@@ -12,21 +12,23 @@
   </div>
 
   <div class="list">
-    <% registerHomes.forEach(registerHome => { %>
+    <% favouriteHomes.forEach(favouriteHome => { %>
       <div class="sub-list">
         <div>
-          <strong>Name :</strong> <%= registerHome.homeName %> 
+          <strong>Name :</strong> <%= favouriteHome.homeName %> 
           <br>
-          <strong>Price : </strong> <%= registerHome.price %> 
+          <strong>Price : </strong> <%= favouriteHome.price %> 
           <br>
-          <strong>Location : </strong> <%= registerHome.location %> 
+          <strong>Location : </strong> <%= favouriteHome.location %> 
           <br>
-          <strong>Rating : </strong> <%= registerHome.rating %> out of 5
-          <br><br>
+          <strong>Rating : </strong> <%= favouriteHome.rating %> out of 5
+          <br>
+          <strong>Description : </strong> <%= favouriteHome.description %> 
+          <br>
           <strong>Image: </strong>
-          <img src="<%= registerHome.imageUrl %>" alt="Home page" width="300" height="200">
+          <img src="<%= favouriteHome.imageUrl %>" alt="Home page" width="300" height="200">
           <br><br>
-          <form action="/store/favourite-list/delete/<%= registerHome._id.toString() %>" method="POST">
+          <form action="/store/favourite-list/delete/<%= favouriteHome._id.toString() %>" method="POST">
             <button type="submit" class="delete-button">Delete</button>
           </form>
         </div>
