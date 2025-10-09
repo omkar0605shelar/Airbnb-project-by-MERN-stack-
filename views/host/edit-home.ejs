@@ -1,14 +1,17 @@
 <%- include('../partials/head') %>
 <link rel="stylesheet" href="/general.css">
 <link rel="stylesheet" href="/add-Home.css">
+
 <body>
-  <%- include('../partials/header') %>
+  <!-- Include header that respects isLoggedIn -->
+  <%- include('../partials/header', { isLoggedIn: isLoggedIn }) %>
 
   <div class="container">
     <h1><%= editing ? "Edit" : "Register" %> your home here:</h1>
 
     <form action="/host/<%= editing ? 'edit-home' : 'add-home' %>" method="POST" class="home-form">
-      <input type="hidden" placeholder="Enter id" value="<%= editing ? home._id : '' %>" name="id">
+      <input type="hidden" name="id" value="<%= editing ? home._id : '' %>">
+
       <label>
         Name of Home:
         <input type="text" name="homeName" placeholder="Enter here:" value="<%= editing ? home.homeName : '' %>">
@@ -26,17 +29,17 @@
 
       <label>
         Rating:
-        <input type="text" placeholder="Rating:" value="<%= editing ? home.rating : '' %>" name="rating">
+        <input type="text" name="rating" placeholder="Rating:" value="<%= editing ? home.rating : '' %>">
       </label>
 
       <label>
         Image:
-        <input type="text" placeholder="Enter image:" name="imageUrl" value="<%= editing ? home.imageUrl : '' %>">
+        <input type="text" name="imageUrl" placeholder="Enter image:" value="<%= editing ? home.imageUrl : '' %>">
       </label>
 
       <label>
-        Image:<br>
-        <textarea placeholder="Enter description:" name="description"><%= editing ? home.description : '' %></textarea>
+        Description:<br>
+        <textarea name="description" placeholder="Enter description:"><%= editing ? home.description : '' %></textarea>
       </label>
 
       <input type="submit" value="<%= editing ? 'Update Home' : 'Add Home' %>">

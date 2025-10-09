@@ -5,7 +5,8 @@ exports.getAddHome = (req, res, next) => {
   res.render('host/edit-Home', {
     pageTitle: 'Register Homes', 
     currentPage : 'addHome',
-    editing: false
+    editing: false,
+    isLoggedIn : req.session.isLoggedIn
   });
 }
 
@@ -26,7 +27,8 @@ exports.getHostHomes = (req, res, next) => {
     res.render('host/host-home-list', {
       registerHomes : registerHomes,
       pageTitle : 'Host Homes list',
-      currentPage : 'host-homes'
+      currentPage : 'host-homes',
+      isLoggedIn : req.session.isLoggedIn
     })
   );
 }
@@ -47,6 +49,7 @@ exports.getEditHome = (req, res, next) => {
       pageTitle: 'Register Homes', 
       currentPage : 'host-homes',
       editing : editing,
+      isLoggedIn : req.session.isLoggedIn
     });
   })  
 }

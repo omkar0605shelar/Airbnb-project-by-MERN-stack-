@@ -35,7 +35,7 @@
 }
 
 /* Book button styling */
-.book-button, .delete-button, .edit-button, .delete-button, .favourite-button, .detail-button {
+.book-button, .delete-button, .edit-button, .delete-button, .favourite-button, .detail-button, .logout-button {
   background-color: red;
   color: #fff;
   border: none;

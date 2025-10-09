@@ -1,12 +1,33 @@
 <header>
-    <a href="/" class="links">Airbnb</a>
-    <a href="/store/home-list" class="links">Home-list</a>
-    
-    <a href="/store/bookings" class="links">Bookings</a>
-    <a href="/store/favourite-list" class="links">Favourite List</a>
+  <link rel="stylesheet" href="/header.css">
 
-    <a href="/host/add-home" class="links">Add Home</a>
-    <!-- <a href="/host/edit-home" class="links">Edit Home</a> -->
-    <a href="/host/host-home-list" class="links">Host Homes</a>
-    <!-- <a href="/store/reserve" class="links">Reserve</a> -->
+  <nav>
+    <ul>
+      <!-- Left section: Brand -->
+      <li class="brand">
+        <a href="/">Airbnb</a>
+      </li>
+
+      <!-- Right section: Menu items -->
+      <div class="nav-links">
+        <% if (isLoggedIn) { %>
+          <li><a href="/store/home-list" class="links">Home List</a></li>
+          <li><a href="/store/bookings" class="links">Bookings</a></li>
+          <li><a href="/store/favourite-list" class="links">Favourite List</a></li>
+          <li><a href="/host/add-home" class="links">Add Home</a></li>
+          <li><a href="/host/host-home-list" class="links">Host Homes</a></li>
+        <% } %>
+
+        <li class="auth-btn">
+          <% if (!isLoggedIn) { %>
+            <a href="/login" class="login-btn">Login</a>
+          <% } else { %>
+            <form action="/logout" method="POST">
+              <button type="submit" class="logout-btn">Logout</button>
+            </form>
+          <% } %>
+        </li>
+      </div>
+    </ul>
+  </nav>
 </header>
