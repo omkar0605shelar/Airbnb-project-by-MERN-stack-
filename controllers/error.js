@@ -2,6 +2,7 @@ exports.get404 = (req, res, next) => {
   res.render('404', {
     pageTitle : '404 Error',
     currentPage:'404',
-    isLoggedIn : req.session.isLoggedIn
+    isLoggedIn : req.session.isLoggedIn,
+    user:req.session.user
   });
 };

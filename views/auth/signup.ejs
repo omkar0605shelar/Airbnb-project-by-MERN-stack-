@@ -1,0 +1,62 @@
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/general.css">
+<link rel="stylesheet" href="/add-Home.css">
+<link rel="stylesheet" href="/signup.css">
+<link rel="stylesheet" href="/errorsBox.css">
+  <body>
+    <%- include('../partials/header') %>
+
+    <div class="container">
+      <h1>Register as a new User</h1>
+
+      <form action="/signup" method="POST" class="home-form">
+				<%- include('../partials/errors') %>
+        <input type="text" name="firstname" placeholder="First name:" 
+				value="<%= typeof oldInput !== 'undefined' ? oldInput.firstname : '' %>" required>
+
+        <input type="text" name="lastname" placeholder="Last name:" value="<%= typeof oldInput !== 'undefined' ? oldInput.lastname : '' %>"  >
+
+        <input type="email" name="email" placeholder="test@email.com" value="<%= typeof oldInput !== 'undefined' ? oldInput.email : '' %>" required>
+
+        <input type="password" name="password" placeholder="Enter your password:" required>
+
+        <input type="password" name="confirmPassword" placeholder="Confirm your password:" required>
+
+				<p>
+					User Type:
+					<label>
+						<input 
+							type="radio" 
+							name="userType" 
+							value="guest" 
+							id="guest"
+							<%= oldInput.userType === 'guest' ? 'checked' : '' %> />
+						<span>Guest</span>
+					</label>
+
+					<label>
+						<input 
+							type="radio" 
+							name="userType" 
+							value="host" 
+							id="host"
+							<%= oldInput.userType === 'host' ? 'checked' : '' %> />
+						<span>Host</span>
+					</label>
+				</p>
+
+
+
+				<p>
+					<input type="checkbox" name="terms" id="terms" required>
+					<label for="terms"> I agree to the terms and conditions</label>
+				</p>
+				<input type="submit" value="Register">
+
+				<p class="login-link">
+					Already have an account? <a href="/login">Sign in</a>
+				</p>
+      </form>
+    </div>
+  </body>
+</html>

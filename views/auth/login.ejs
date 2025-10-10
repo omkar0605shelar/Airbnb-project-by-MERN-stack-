@@ -1,6 +1,8 @@
 <%- include('../partials/head') %>
 <link rel="stylesheet" href="/general.css">
 <link rel="stylesheet" href="/add-Home.css">
+<link rel="stylesheet" href="/login.css">
+<link rel="stylesheet" href="/errorsBox.css">
   <body>
     <%- include('../partials/header') %>
 
@@ -8,11 +10,15 @@
       <h1>Login with your info</h1>
 
       <form action="/login" method="POST" class="home-form">
-        <input type="text" name="username" placeholder="Enter your email" required>
+        <%- include('../partials/errors') %>
+        <input type="email" name="email" placeholder="Enter your email:" value="<%=  oldInput.email ? oldInput.email : '' %>" required>
 
         <input type="password" name="password" placeholder="Enter your password:" required>
 
         <input type="submit" value="Sign in">
+        <div>
+          Don't have an account yet? <a href="/signup" class="signup-link">Sign up</a>
+        </div>
       </form>
     </div>
   </body>

@@ -1,10 +1,10 @@
 <%- include('../partials/head') %>
 <link rel="stylesheet" href="/general.css">
 <link rel="stylesheet" href="/add-Home.css">
-
+</head>
 <body>
-  <!-- Include header that respects isLoggedIn -->
-  <%- include('../partials/header', { isLoggedIn: isLoggedIn }) %>
+  <!-- Include header -->
+  <%- include('../partials/header') %>
 
   <div class="container">
     <h1><%= editing ? "Edit" : "Register" %> your home here:</h1>

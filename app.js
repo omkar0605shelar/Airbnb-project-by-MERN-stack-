@@ -21,7 +21,7 @@ app.set('views', 'views');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const store = new MongoDBStore({
-  uri: "mongodb+srv://shelaromkar313_db_user:Shelar321@clustertest.0zmobsm.mongodb.net/airbnb?retryWrites=true&w=majority&appName=ClusterTest",
+  uri: "mongodb+srv://shelaromkar313_db_user:Shelar321@clustertest.0zmobsm.mongodb.net/?retryWrites=true&w=majority&appName=ClusterTest",
   collection:'sessions'
 });
 
@@ -60,7 +60,7 @@ app.use("/", authRouter);
 
 app.use(errorController.get404);
 
-const db_path = "mongodb+srv://shelaromkar313_db_user:Shelar321@clustertest.0zmobsm.mongodb.net/airbnb?retryWrites=true&w=majority&appName=ClusterTest"
+const db_path = "mongodb+srv://shelaromkar313_db_user:Shelar321@clustertest.0zmobsm.mongodb.net/?retryWrites=true&w=majority&appName=ClusterTest"
 mongoose.connect(db_path)
 .then(() => {
   console.log("Mongodb connected");

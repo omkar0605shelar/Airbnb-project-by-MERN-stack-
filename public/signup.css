@@ -1,0 +1,89 @@
+
+/* Title */
+.container h1 {
+  font-size: 24px;
+  color: #222;
+  margin-bottom: 30px;
+}
+
+/* Input fields */
+.home-form input[type="text"],
+.home-form input[type="email"],
+.home-form input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1.5px solid #dcdcdc;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #f9fafb;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Focus animation */
+.home-form input:focus {
+  border-color: #ff4b4b;
+  box-shadow: 0 0 5px rgba(255, 75, 75, 0.3);
+  outline: none;
+  background-color: #fff;
+}
+
+/* Radio section */
+.home-form p {
+  text-align: left;
+  font-size: 14px;
+  margin: 15px 0;
+}
+
+.home-form label {
+  margin-right: 15px;
+  font-weight: 500;
+}
+
+.home-form input[type="radio"] {
+  margin-right: 6px;
+}
+
+/* Terms checkbox */
+.home-form input[type="checkbox"] {
+  margin-right: 6px;
+}
+
+.home-form a {
+  color: #ff4b4b;
+  text-decoration: none;
+}
+
+.home-form a:hover {
+  text-decoration: underline;
+}
+
+/* Submit button */
+.home-form input[type="submit"] {
+  width: 100%;
+  background: #ff4b4b;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.home-form input[type="submit"]:hover {
+  background: #e04343;
+  transform: scale(1.03);
+}
+
+/* Add subtle text for login link */
+.container p.login-link {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.container p.login-link a {
+  color: #ff4b4b;
+  font-weight: 500;
+}

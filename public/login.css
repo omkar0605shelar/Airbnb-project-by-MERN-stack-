@@ -1,0 +1,63 @@
+/* Heading */
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* Input fields */
+.home-form input[type="email"],
+.home-form input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border: 1.5px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+/* Focus effect */
+.home-form input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+  outline: none;
+  transform: scale(1.02);
+}
+
+/* Submit button */
+.home-form input[type="submit"] {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  padding: 12px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+/* Hover animation for button */
+.home-form input[type="submit"]:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Add small hover animation to input fields */
+.home-form input:hover {
+  border-color: #007bff;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+    padding: 25px;
+  }
+}
+.signup-link {
+  color: red;
+  text-decoration: none;
+}

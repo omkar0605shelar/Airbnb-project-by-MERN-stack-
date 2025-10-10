@@ -11,22 +11,42 @@
       <!-- Right section: Menu items -->
       <div class="nav-links">
         <% if (isLoggedIn) { %>
-          <li><a href="/store/home-list" class="links">Home List</a></li>
-          <li><a href="/store/bookings" class="links">Bookings</a></li>
-          <li><a href="/store/favourite-list" class="links">Favourite List</a></li>
-          <li><a href="/host/add-home" class="links">Add Home</a></li>
-          <li><a href="/host/host-home-list" class="links">Host Homes</a></li>
+          <% if(user && user.userType === 'guest') { %>
+            <li>
+              <a href="/store/home-list" class="links">Home List</a>
+            </li>
+            <li>
+              <a href="/store/bookings" class="links">Bookings</a>
+            </li>
+            <li>
+              <a href="/store/favourite-list" class="links">Favourite List</a>
+            </li>
+          <% } else { %>
+            <li>
+              <a href="/host/add-home" class="links">Add Home</a>
+            </li>
+            <li>
+              <a href="/host/host-home-list" class="links">Host Homes</a>
+            </li>
+          <% } %>
         <% } %>
 
-        <li class="auth-btn">
-          <% if (!isLoggedIn) { %>
+        
+        <% if (!isLoggedIn) { %>
+          <li class="auth-btn">
+            <a href="/signup" class="login-btn">Sign Up</a>
+          </li>
+
+          <li class="auth-btn">
             <a href="/login" class="login-btn">Login</a>
-          <% } else { %>
+          </li>
+        <% } else { %>
+          <li>
             <form action="/logout" method="POST">
               <button type="submit" class="logout-btn">Logout</button>
             </form>
-          <% } %>
-        </li>
+          </li>
+        <% } %>
       </div>
     </ul>
   </nav>
