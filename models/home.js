@@ -19,8 +19,9 @@ const homeSchema = new mongoose.Schema(
       type:Number,
       required:true
     },
-    imageUrl: String,
-    description: String
+    image: String,
+    description: String,
+    rulesFile:String
   }
 )
 

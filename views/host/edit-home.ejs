@@ -9,7 +9,7 @@
   <div class="container">
     <h1><%= editing ? "Edit" : "Register" %> your home here:</h1>
 
-    <form action="/host/<%= editing ? 'edit-home' : 'add-home' %>" method="POST" class="home-form">
+    <form action="/host/<%= editing ? 'edit-home' : 'add-home' %>" method="POST" class="home-form" enctype="multipart/form-data">
       <input type="hidden" name="id" value="<%= editing ? home._id : '' %>">
 
       <label>
@@ -34,7 +34,12 @@
 
       <label>
         Image:
-        <input type="text" name="imageUrl" placeholder="Enter image:" value="<%= editing ? home.imageUrl : '' %>">
+        <input type="file" name="image" accept="image/*">
+      </label>
+
+      <label>
+        Upload rules file :
+        <input type="file" name="rulesFile" accept="application/pdf">
       </label>
 
       <label>

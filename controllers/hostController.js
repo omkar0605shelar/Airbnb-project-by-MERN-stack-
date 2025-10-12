@@ -1,4 +1,6 @@
 const Home  = require('../models/home');
+const fs = require('fs');
+const path = require('path');
 
 // Add new home
 exports.getAddHome = (req, res, next) => {
@@ -12,15 +14,39 @@ exports.getAddHome = (req, res, next) => {
 }
 
 exports.postAddHome = (req, res, next) => {
-  const {homeName, price, location, rating, imageUrl, description} = req.body;
+  const {homeName, price, location, rating, description} = req.body;
 
-  const home = new Home({homeName, price, location, rating, imageUrl, description});
+  console.log(homeName, price, location, rating, description);
+  console.log(req.file);
+
+  if(!req.files || !req.files.image || !req.files.rulesFile){
+    console.log("No image provided");
+    return res.status(422).send("No image provided and pdf are not provided");
+  }
+
+  const image = req.files.image[0].path;
+  const rulesFileTempPath = req.files.rulesFile[0].path;
+
+  const home = new Home({homeName, price, location, rating, image, description});
+
+  console.log("Image path:", image);
+
+  if (rulesFileTempPath) {
+    const newFileName = `${home._id}.pdf`;
+    const newFilePath = path.join('rules-files', newFileName);
+
+    fs.renameSync(rulesFileTempPath, newFilePath); 
+
+    home.rulesFile = newFilePath;
+  }
 
   home.save().then(() => {
     console.log("home saved successfully");
+    res.redirect('/host/host-home-list');
   })
-
-  res.redirect('/host/host-home-list');
+  .catch((error) => {
+    console.log("Failed to save home ", error);
+  })
 }
 
 exports.getHostHomes = (req, res, next) => {
@@ -58,22 +84,48 @@ exports.getEditHome = (req, res, next) => {
 }
 
 exports.postEditHome = (req, res, next) => {
-  const {id, homeName, price, location, rating, imageUrl, description} = req.body;
-
-  const home = new Home({homeName, price, location, rating, imageUrl, description, id});
+  const {id, homeName, price, location, rating, description} = req.body;
 
   Home.findById(id).then((home) => {
     home.homeName = homeName;
-    home.imageUrl = imageUrl;
+    if(req.files){
+      if(req.files.image && req.files.image[0]){
+        fs.unlink(home.image, (err) => {
+          if(err){
+            console.log("Error while deleting image", err);
+          }
+        })
+        home.image = req.files.image.path;
+      }
+      if(req.files.rulesFile && req.files.rulesFile[0]){
+        fs.unlink(home.rulesFile, (err) => {
+          if(err) {
+            console.log("Error while deleting rulesFile", err);
+          }
+        })
+        home.rulesFile = req.files.rulesFile.path;
+        const rulesFileTempPath = req.files.rulesFile[0].path;
+
+        if (rulesFileTempPath) {
+          const newFileName = `${home._id}.pdf`;
+          const newFilePath = path.join('rules-files', newFileName);
+
+          fs.renameSync(rulesFileTempPath, newFilePath); 
+
+          home.rulesFile = newFilePath;
+        }
+      }
+    }
     home.rating = rating;
     home.description = description;
     home.price = price;
     home.location = location;
+    
     home.save().then((result) => {
       console.log("Result : ", result);
     })
     .catch(error => {
-      console.log(err, " Error occured")
+      console.log(err, " Error occured while saving home")
     })
     res.redirect('/host/host-home-list');
   }).catch(error => {

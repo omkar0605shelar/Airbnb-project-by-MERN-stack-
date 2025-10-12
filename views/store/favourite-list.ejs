@@ -26,7 +26,7 @@
           <strong>Description : </strong> <%= favouriteHome.description %> 
           <br>
           <strong>Image: </strong>
-          <img src="<%= favouriteHome.imageUrl %>" alt="Home page" width="300" height="200">
+          <img src="<%= favouriteHome.image %>" alt="Home page" width="300" height="200">
           <br><br>
           <form action="/store/favourite-list/delete/<%= favouriteHome._id.toString() %>" method="POST">
             <button type="submit" class="delete-button">Delete</button>

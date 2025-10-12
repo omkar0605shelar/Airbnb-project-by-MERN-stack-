@@ -1,5 +1,7 @@
 const Home  = require('../models/home');
 const User = require('../models/user');
+const path = require('path');
+const fs = require('fs');
 
 // Get all homes
 exports.getHomes = (req, res, next) => {
@@ -96,3 +98,23 @@ exports.postRemoveToFavourites = async (req, res, next) => {
 
   res.redirect('/store/favourite-list');
 };
+
+exports.getRulesFiles = [
+  (req, res, next) => {
+    if (req.session.isLoggedIn) {
+      next();
+    } else {
+      res.redirect('/auth/login');
+    }
+  },
+  (req, res) => {
+    const homeId = req.params.homeId; 
+    const filePath = path.join(__dirname, '../', 'rules-files', `${homeId}.pdf`);
+
+    if (fs.existsSync(filePath)) {
+      res.download(filePath, `${homeId}.pdf`);
+    } else {
+      res.status(404).send('Rules file not found.');
+    }
+  }
+];

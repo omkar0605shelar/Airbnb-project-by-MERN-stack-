@@ -21,8 +21,11 @@
           <strong>Description : </strong> <%= home.description %> 
           <br>
 
-          <strong>Image: </strong><img src="<%= home.imageUrl %>" alt="Home page"  width="300" height="200">
-          <br><br>
+          <strong>Image: </strong><img src="<%= home.image %>" alt="Home page"  width="300" height="200">
+          <br>
+          <a href="/store/rules/<%= home._id.toString() %>">
+            Download rules file
+          </a>
 
           <div style="margin-top: 5px;">
             <%- include('../partials/favourite') %>
